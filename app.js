@@ -11,8 +11,8 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
-app.use(cookieParser)
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser);
 
 app.use("/app/v1/auth", authRoutes);
 app.use("/app/v1/users", userRoutes);
@@ -21,12 +21,14 @@ app.use("/app/v1/subscriptions", subscriptionRoutes);
 app.use(errorMiddleware);
 
 app.get("/", (req, res) => {
-    res.send("welcome to the subscription tracker api");
+  res.send("welcome to the subscription tracker api");
 });
 
-app.listen(PORT, async ()=>{
-    console.log(`Subscription tracker api is running on http://localhost/${PORT}`);
-    await connectToDatabase();
+app.listen(PORT, async () => {
+  console.log(
+    `Subscription tracker api is running on http://localhost/${PORT}`
+  );
+  await connectToDatabase();
 });
 
 export default app;

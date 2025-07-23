@@ -8,15 +8,13 @@ if (!DB_URI) {
 }
 
 const connectToDatabase = async () => {
-    try {
-        await mongoose.connect(DB_URI);
-        console.log(`Connected to database ${NODE_ENV} mode`);
-
-    } catch(error){
-        console.log("Error Connecting to database: ", error);
-        process.exit(1);
-    }
-}
+  try {
+    await mongoose.connect(DB_URI);
+    console.log(`Connected to database ${NODE_ENV} mode`);
+  } catch (error) {
+    console.log("Error Connecting to database: ", error);
+    process.exit(1);
+  }
+};
 
 export default connectToDatabase;
-
